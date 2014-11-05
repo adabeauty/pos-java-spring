@@ -16,15 +16,15 @@ public class ItemService {
         return itemImple.getItems();
     }
 
-    public Item getItemByBarcode(String barcode) {
-        return itemImple.getItemByBarcode(barcode);
-    }
+//    public Item getItemByBarcode(String barcode) {
+//        return itemImple.getItemByBarcode(barcode);
+//    }
 
     public ArrayList<Promotion> getPromotions(int id) {
         return itemImple.getPromotions(id);
     }
 
-    public Category getCategory(int id) {
-        return itemImple.getCategory(id);
-    }
+//    public Category getCategory(int id) {
+//        return itemImple.getCategory(id);
+//    }
 }
