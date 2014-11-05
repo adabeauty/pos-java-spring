@@ -27,25 +27,8 @@ public class PromotionImple implements PromotionDao {
     }
 
     public ArrayList<Promotion> getPromotions() {
-        ArrayList<Promotion> promotions = new ArrayList<Promotion>();
         String sql = "SELECT * FROM promotions";
-
-        Promotion promotion = null;
-        Connection conn = connctionUlti.getConnection();
-        try{
-            preparedStatement = conn.prepareStatement(sql);
-
-            result = preparedStatement.executeQuery(sql);
-            while (result.next()){
-                promotion = setPromotion(result);
-                promotions.add(promotion);
-            }
-            closeAllConnection();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return promotions;
+        return ( ArrayList<Promotion>)simpleJdbcTemplate.query(sql, new UserRowMapper());
     }
 
     private void closeAllConnection(){
