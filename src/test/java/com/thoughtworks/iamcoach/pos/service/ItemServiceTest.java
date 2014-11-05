@@ -29,9 +29,9 @@ public class ItemServiceTest {
 
         ItemImple itemImple = mock(ItemImple.class);
         when(itemImple.getItems()).thenReturn(items);
-        when(itemImple.getItemByBarcode(barcode)).thenReturn(item);
+//        when(itemImple.getItemByBarcode(barcode)).thenReturn(item);
         when(itemImple.getPromotions(id)).thenReturn(promotions);
-        when(itemImple.getCategory(id)).thenReturn(category);
+//        when(itemImple.getCategory(id)).thenReturn(category);
 
         itemService = new ItemService(itemImple);
     }
@@ -41,24 +41,9 @@ public class ItemServiceTest {
         assertThat(itemService.getItems().size()).isEqualTo(1);
     }
 
-
-    @Test
-    public void can_get_item_by_barcode(){
-        Item item = new Item(null, 3,"TF1001", "juice", "can", 8.0);
-        String barcode = "TF1001";
-        assertThat(itemService.getItemByBarcode(barcode).toString()).isEqualTo(item.toString());
-    }
-
     @Test
     public void can_get_promotions_of_item(){
         int id = 1;
         assertThat(itemService.getPromotions(id).size()).isEqualTo(1);
-    }
-
-    @Test
-    public void can_get_category_of_item(){
-        int id = 1;
-        Category category = new Category(null, "drink");
-        assertThat(itemService.getCategory(id).toString()).isEqualTo(category.toString());
     }
 }
