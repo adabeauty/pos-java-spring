@@ -1,8 +1,6 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
-import com.thoughtworks.iamcoach.pos.model.Promotion;
-import com.thoughtworks.iamcoach.pos.model.PromotionFactory;
+import com.thoughtworks.iamcoach.pos.model.*;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
@@ -16,11 +14,6 @@ public class PromotionImple implements PromotionDao {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
     }
 
-    private ConnctionUlti connctionUlti = new ConnctionUlti();
-
-    private PreparedStatement preparedStatement = null;
-    private ResultSet result = null;
-
     public Promotion getPromotionByType(int type) {
         String sql =  "SELECT * FROM promotions WHERE type = ?";
         return (Promotion)simpleJdbcTemplate.queryForObject(sql, new UserRowMapper(), type);
@@ -29,34 +22,6 @@ public class PromotionImple implements PromotionDao {
     public ArrayList<Promotion> getPromotions() {
         String sql = "SELECT * FROM promotions";
         return ( ArrayList<Promotion>)simpleJdbcTemplate.query(sql, new UserRowMapper());
-    }
-
-    private void closeAllConnection(){
-        connctionUlti.closeConnection();
-        try {
-            preparedStatement.close();
-            result.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Promotion setPromotion(ResultSet rs){
-        Promotion promotion = null;
-        try {
-            promotion  =  PromotionFactory.generatePromotion(rs.getInt("type"));
-
-            promotion.setId(rs.getInt("id"));
-            promotion.setId(rs.getInt("type"));
-            promotion.setDescription(rs.getString("description"));
-            if(rs.getInt("type") == 3){
-                promotion.setDiscount(result.getDouble("discount"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return promotion;
     }
 
     private static final class UserRowMapper implements RowMapper {
