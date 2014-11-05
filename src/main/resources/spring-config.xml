@@ -39,6 +39,10 @@
         <constructor-arg ref="itemImpl"/>
     </bean>
 
+    <bean id="promotionService" class="com.thoughtworks.iamcoach.pos.service.PromotionService">
+        <constructor-arg ref="promotionImpl"/>
+    </bean>
+
     <bean id="printer" class="Printer" scope="prototype">
         <constructor-arg ref="cartService"/>
         <constructor-arg ref="categoryImpl"/>
