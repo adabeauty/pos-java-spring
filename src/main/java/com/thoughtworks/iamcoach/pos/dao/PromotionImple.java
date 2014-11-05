@@ -3,6 +3,7 @@ package com.thoughtworks.iamcoach.pos.dao;
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import com.thoughtworks.iamcoach.pos.model.Promotion;
 import com.thoughtworks.iamcoach.pos.model.PromotionFactory;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ public class PromotionImple implements PromotionDao {
     private PreparedStatement preparedStatement = null;
     private ResultSet result = null;
 
-    @Override
     public Promotion getPromotionByType(int type) {
         String sql =  "SELECT * FROM promotions WHERE type = ?";
         Connection connection = connctionUlti.getConnection();
@@ -35,7 +35,6 @@ public class PromotionImple implements PromotionDao {
         return promotion;
     }
 
-    @Override
     public ArrayList<Promotion> getPromotions() {
         ArrayList<Promotion> promotions = new ArrayList<Promotion>();
         String sql = "SELECT * FROM promotions";
@@ -84,5 +83,16 @@ public class PromotionImple implements PromotionDao {
         }
 
         return promotion;
+    }
+
+    private static final class UserRowMapper implements RowMapper {
+        public Promotion mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Promotion promotion = PromotionFactory.generatePromotion(rs.getInt("type"));
+            promotion.setId(rs.getInt("id"));
+            promotion.setType(rs.getInt("type"));
+            promotion.setDescription(rs.getString("description"));
+            promotion.setDiscount(rs.getDouble("discount"));
+            return promotion;
+        }
     }
 }
