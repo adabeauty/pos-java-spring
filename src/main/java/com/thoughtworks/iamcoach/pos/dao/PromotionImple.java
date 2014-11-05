@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PromotionImple implements PromotionDao {
     private SimpleJdbcTemplate simpleJdbcTemplate;
 
-    public PromotionImple(SimpleJdbcTemplate simpleJdbcTemplate) {g
+    public PromotionImple(SimpleJdbcTemplate simpleJdbcTemplate) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
     }
 
