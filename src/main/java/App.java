@@ -6,7 +6,6 @@ public class App {
 
     public static void main(String[] args) {
 
-//        ArrayList<String> inputs = ReadFileUlti.readFile("cart.txt");
         ItemDao itemImpl = new ItemImple();
         Scanner scanner = new Scanner();
         CartService cartService = new CartService(scanner, itemImpl);
