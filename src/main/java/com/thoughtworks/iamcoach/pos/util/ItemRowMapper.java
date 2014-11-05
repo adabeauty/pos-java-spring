@@ -7,8 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ItemRowMapper implements RowMapper {
+    private Item item;
+
+    public ItemRowMapper(Item item) {
+        this.item = item;
+    }
+
     public Item mapRow(ResultSet rs, int rowNum) {
-        Item item = new Item();
         try {
             item.setId(rs.getString("id"));
             item.setCategoryId(rs.getInt("categoryId"));
