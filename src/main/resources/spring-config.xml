@@ -15,15 +15,13 @@
 
     <bean id="category" class="com.thoughtworks.iamcoach.pos.model.Category" scope="prototype"/>
     <bean id="categoryRowMapper" class="com.thoughtworks.iamcoach.pos.util.CategoryRowMapper">
-        <constructor-arg ref="category"></constructor-arg>
+        <constructor-arg ref="category"/>
     </bean>
 
-    <bean id="item" class="com.thoughtworks.iamcoach.pos.model.Item"/>
+    <bean id="item" class="com.thoughtworks.iamcoach.pos.model.Item" scope="prototype"/>
     <bean id="itemRowMapper" class="com.thoughtworks.iamcoach.pos.util.ItemRowMapper">
-        <constructor-arg ref="item"/>
+        <!--<constructor-arg ref="item"/>-->
     </bean>
-
-
 
     <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
         <constructor-arg ref="categoryRowMapper"></constructor-arg>
@@ -32,6 +30,7 @@
 
     <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImple" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg ref="itemRowMapper"/>
     </bean>
     <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImple">
         <constructor-arg ref="jdbcTemplate"/>
