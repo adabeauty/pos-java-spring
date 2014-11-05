@@ -1,6 +1,5 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import com.thoughtworks.iamcoach.pos.model.Category;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
@@ -16,11 +15,6 @@ public class CategoryImple implements CategoryDao{
         this.simpleJdbcTemplate = simpleJdbcTemplate;
     }
 
-    private ConnctionUlti connctionUlti = new ConnctionUlti();
-    
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
-
     public ArrayList<Category> getCategories() {
         String sql = "SELECT * FROM categories";
         return (ArrayList<Category>)simpleJdbcTemplate.query(sql, new UserRowMapper());
@@ -29,16 +23,6 @@ public class CategoryImple implements CategoryDao{
     public Category getCategoryById(int id) {
         String sql = "SELECT * FROM categories WHERE id = ?";
         return (Category)simpleJdbcTemplate.queryForObject(sql, new UserRowMapper(), id);
-    }
-
-    private void CloseAllConnection(){
-        connctionUlti.closeConnection();
-        try {
-            preparedStatement.close();
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     private static final class UserRowMapper implements RowMapper {
