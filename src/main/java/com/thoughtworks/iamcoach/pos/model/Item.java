@@ -10,6 +10,9 @@ public class Item {
     private String unit;
     private double price;
 
+    public Item() {
+    }
+
     public Item(String id, int categoryId, String barcode, String name, String unit, double price) {
         this.id = id;
         this.categoryId = categoryId;
@@ -25,6 +28,26 @@ public class Item {
 
     public String getId() {
         return id;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getCategoryId() {
