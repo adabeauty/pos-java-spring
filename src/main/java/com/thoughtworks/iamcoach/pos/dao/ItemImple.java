@@ -8,14 +8,15 @@ import java.util.ArrayList;
 
 public class ItemImple implements ItemDao {
     private SimpleJdbcTemplate simpleJdbcTemplate;
-
-    public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate) {
+    private ItemRowMapper itemRowMapper;
+    public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate, ItemRowMapper itemRowMapper) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
+        this.itemRowMapper = itemRowMapper;
     }
 
     public ArrayList<Item> getItems() {
         String sql = "SELECT * FROM items";
-        return  (ArrayList<Item>)simpleJdbcTemplate.query(sql, new ItemRowMapper());
+        return  (ArrayList<Item>)simpleJdbcTemplate.query(sql, itemRowMapper);
     }
 
     public ArrayList<Promotion> getPromotions(int id) {
