@@ -1,7 +1,26 @@
 package com.thoughtworks.iamcoach.pos.util;
 
-/**
- * Created by wanghuan on 14-11-5.
- */
-public class ItemRowMapper {
+import com.thoughtworks.iamcoach.pos.model.Item;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class ItemRowMapper implements RowMapper {
+    public Item mapRow(ResultSet rs, int rowNum) {
+        Item item = new Item();
+        try {
+            item.setId(rs.getString("id"));
+            item.setCategoryId(rs.getInt("categoryId"));
+            item.setBarcode(rs.getString("barcode"));
+            item.setName(rs.getString("name"));
+            item.setUnit(rs.getString("unit"));
+            item.setPrice(rs.getDouble("price"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return item;
+    }
 }
+
