@@ -8,18 +8,20 @@ import java.util.ArrayList;
 
 public class CategoryImple implements CategoryDao{
     private SimpleJdbcTemplate simpleJdbcTemplate;
+    private CategoryRowMapper categoryRowMapper;
 
-    public CategoryImple(SimpleJdbcTemplate simpleJdbcTemplate) {
+    public CategoryImple(SimpleJdbcTemplate simpleJdbcTemplate, CategoryRowMapper categoryRowMapper) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
+        this.categoryRowMapper = categoryRowMapper;
     }
 
     public ArrayList<Category> getCategories() {
         String sql = "SELECT * FROM categories";
-        return (ArrayList<Category>)simpleJdbcTemplate.query(sql, new CategoryRowMapper());
+        return (ArrayList<Category>)simpleJdbcTemplate.query(sql, categoryRowMapper);
     }
 
     public Category getCategoryById(int id) {
         String sql = "SELECT * FROM categories WHERE id = ?";
-        return (Category)simpleJdbcTemplate.queryForObject(sql, new CategoryRowMapper(), id);
+        return (Category)simpleJdbcTemplate.queryForObject(sql, categoryRowMapper, id);
     }
 }
