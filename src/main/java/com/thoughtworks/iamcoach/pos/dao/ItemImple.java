@@ -21,26 +21,8 @@ public class ItemImple implements ItemDao {
 
 
     public ArrayList<Item> getItems() {
-//        ArrayList<Item> items = new ArrayList<Item>();
-        String sql = "SELECT * FROM items";
+g        String sql = "SELECT * FROM items";
         return  (ArrayList<Item>)simpleJdbcTemplate.query(sql, new UserRowMapper());
-//        Item item = null;
-//        Connection conn = connctionUlti.getConnection();
-//        try{
-//            pstmt = conn.prepareStatement(sql);
-//
-//            rs = pstmt.executeQuery(sql);
-//            while (rs.next()){
-//                item = new Item(rs.getString("id"), rs.getInt("categoryId"), rs.getString("barcode"), rs.getString("name"), rs.getString("unit"), rs.getDouble("price"));
-//                items.add(item);
-//            }
-//
-//            closeAllConnrction();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return items;
     }
 
     public ArrayList<Promotion> getPromotions(int id) {
