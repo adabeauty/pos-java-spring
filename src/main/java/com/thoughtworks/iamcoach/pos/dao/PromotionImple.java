@@ -4,11 +4,18 @@ import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import com.thoughtworks.iamcoach.pos.model.Promotion;
 import com.thoughtworks.iamcoach.pos.model.PromotionFactory;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class PromotionImple implements PromotionDao {
+    private SimpleJdbcTemplate simpleJdbcTemplate;
+
+    public PromotionImple(SimpleJdbcTemplate simpleJdbcTemplate) {g
+        this.simpleJdbcTemplate = simpleJdbcTemplate;
+    }
+
     private ConnctionUlti connctionUlti = new ConnctionUlti();
 
     private PreparedStatement preparedStatement = null;
@@ -16,23 +23,7 @@ public class PromotionImple implements PromotionDao {
 
     public Promotion getPromotionByType(int type) {
         String sql =  "SELECT * FROM promotions WHERE type = ?";
-        Connection connection = connctionUlti.getConnection();
-        Promotion promotion = null;
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, type);
-
-            result = preparedStatement.executeQuery();
-            result.next();
-
-            promotion = setPromotion(result);
-
-            closeAllConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return promotion;
+        return (Promotion)simpleJdbcTemplate.queryForObject(sql, new UserRowMapper(), type);
     }
 
     public ArrayList<Promotion> getPromotions() {
