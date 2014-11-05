@@ -1,8 +1,6 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-gimport com.thoughtworks.iamcoach.pos.model.Item;
-import com.thoughtworks.iamcoach.pos.model.Promotion;
-import com.thoughtworks.iamcoach.pos.model.PromotionFactory;
+import com.thoughtworks.iamcoach.pos.model.*;
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 
 import java.sql.*;
