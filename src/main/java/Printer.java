@@ -43,6 +43,7 @@ public class Printer {
         String allCartItems = "************************************************" + "\n";
 
         ArrayList<Category> categories = categoryImple.getCategories();
+
         for(int i=0; i<categories.size(); i++){
             int id = Integer.parseInt(categories.get(i).getId());
 
