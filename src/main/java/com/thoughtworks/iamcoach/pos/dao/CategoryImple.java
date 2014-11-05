@@ -2,6 +2,7 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import com.thoughtworks.iamcoach.pos.model.Category;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.sql.*;
@@ -22,23 +23,23 @@ public class CategoryImple implements CategoryDao{
 
     public ArrayList<Category> getCategories() {
         String sql = "SELECT * FROM categories";
-
-        ArrayList<Category> categories = new ArrayList<Category>();
-        Connection conn = connctionUlti.getConnection();
-        try{
-            preparedStatement = conn.prepareStatement(sql);
-
-            resultSet = preparedStatement.executeQuery(sql);
-            while (resultSet.next()){
-                Category category = new Category(resultSet.getString("id"), resultSet.getString("name"));
-                categories.add(category);
-            }
-
-            CloseAllConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return categories;
+        return (ArrayList<Category>)simpleJdbcTemplate.query(sql, new UserRowMapper());
+//        ArrayList<Category> categories = new ArrayList<Category>();
+//        Connection conn = connctionUlti.getConnection();
+//        try{
+//            preparedStatement = conn.prepareStatement(sql);
+//
+//            resultSet = preparedStatement.executeQuery(sql);
+//            while (resultSet.next()){
+//                Category category = new Category(resultSet.getString("id"), resultSet.getString("name"));
+//                categories.add(category);
+//            }
+//
+//            CloseAllConnection();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return categories;
     }
 
     public Category getCategoryById(int id) {
@@ -68,6 +69,15 @@ public class CategoryImple implements CategoryDao{
             resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static final class UserRowMapper implements RowMapper {
+        public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Category category = new Category();
+            category.setName(rs.getString("name"));
+            category.setId(rs.getString("id"));
+            return category;
         }
     }
 }
