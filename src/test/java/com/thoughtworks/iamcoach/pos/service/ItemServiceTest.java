@@ -29,9 +29,7 @@ public class ItemServiceTest {
 
         ItemImple itemImple = mock(ItemImple.class);
         when(itemImple.getItems()).thenReturn(items);
-//        when(itemImple.getItemByBarcode(barcode)).thenReturn(item);
         when(itemImple.getPromotions(id)).thenReturn(promotions);
-//        when(itemImple.getCategory(id)).thenReturn(category);
 
         itemService = new ItemService(itemImple);
     }
