@@ -23,17 +23,19 @@
         <!--<constructor-arg ref="item"/>-->
     </bean>
 
+    <bean id="promotionRowMapper" class="com.thoughtworks.iamcoach.pos.util.PromotionRowMapper"></bean>
+
     <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
         <constructor-arg ref="categoryRowMapper"></constructor-arg>
         <constructor-arg ref="jdbcTemplate"></constructor-arg>
     </bean>
-
     <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImple" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
         <constructor-arg ref="itemRowMapper"/>
     </bean>
     <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImple">
         <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg ref="promotionRowMapper"/>
     </bean>
 
     <bean id="itemService" class="com.thoughtworks.iamcoach.pos.service.ItemService">
