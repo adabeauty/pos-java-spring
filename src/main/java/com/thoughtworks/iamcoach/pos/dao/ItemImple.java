@@ -3,37 +3,44 @@ package com.thoughtworks.iamcoach.pos.dao;
 import com.thoughtworks.iamcoach.pos.model.*;
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class ItemImple implements ItemDao {
+    private SimpleJdbcTemplate simpleJdbcTemplate;
+
+    public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate) {
+        this.simpleJdbcTemplate = simpleJdbcTemplate;
+    }
+
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
     private ConnctionUlti connctionUlti = new ConnctionUlti();
 
 
     public ArrayList<Item> getItems() {
-        ArrayList<Item> items = new ArrayList<Item>();
+//        ArrayList<Item> items = new ArrayList<Item>();
         String sql = "SELECT * FROM items";
-
-        Item item = null;
-        Connection conn = connctionUlti.getConnection();
-        try{
-            pstmt = conn.prepareStatement(sql);
-
-            rs = pstmt.executeQuery(sql);
-            while (rs.next()){
-                item = new Item(rs.getString("id"), rs.getInt("categoryId"), rs.getString("barcode"), rs.getString("name"), rs.getString("unit"), rs.getDouble("price"));
-                items.add(item);
-            }
-
-            closeAllConnrction();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return items;
+        return  (ArrayList<Item>)simpleJdbcTemplate.query(sql, new UserRowMapper());
+//        Item item = null;
+//        Connection conn = connctionUlti.getConnection();
+//        try{
+//            pstmt = conn.prepareStatement(sql);
+//
+//            rs = pstmt.executeQuery(sql);
+//            while (rs.next()){
+//                item = new Item(rs.getString("id"), rs.getInt("categoryId"), rs.getString("barcode"), rs.getString("name"), rs.getString("unit"), rs.getDouble("price"));
+//                items.add(item);
+//            }
+//
+//            closeAllConnrction();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return items;
     }
 
     public ArrayList<Promotion> getPromotions(int id) {
