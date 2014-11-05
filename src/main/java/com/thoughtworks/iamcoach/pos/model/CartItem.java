@@ -43,4 +43,13 @@ public class CartItem{
 
         return Collections.min(allSubTotals);
     }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "item=" + item +
+                ", num=" + num +
+                ", promotionList=" + promotionList +
+                '}';
+    }
 }
