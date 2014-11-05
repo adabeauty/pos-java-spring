@@ -13,7 +13,6 @@ public class ItemImple implements ItemDao {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
     }
 
-
     public ArrayList<Item> getItems() {
         String sql = "SELECT * FROM items";
         return  (ArrayList<Item>)simpleJdbcTemplate.query(sql, new ItemRowMapper());
