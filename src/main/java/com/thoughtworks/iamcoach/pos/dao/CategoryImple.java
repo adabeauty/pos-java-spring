@@ -24,22 +24,6 @@ public class CategoryImple implements CategoryDao{
     public ArrayList<Category> getCategories() {
         String sql = "SELECT * FROM categories";
         return (ArrayList<Category>)simpleJdbcTemplate.query(sql, new UserRowMapper());
-//        ArrayList<Category> categories = new ArrayList<Category>();
-//        Connection conn = connctionUlti.getConnection();
-//        try{
-//            preparedStatement = conn.prepareStatement(sql);
-//
-//            resultSet = preparedStatement.executeQuery(sql);
-//            while (resultSet.next()){
-//                Category category = new Category(resultSet.getString("id"), resultSet.getString("name"));
-//                categories.add(category);
-//            }
-//
-//            CloseAllConnection();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return categories;
     }
 
     public Category getCategoryById(int id) {
