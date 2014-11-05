@@ -1,7 +1,6 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtworks.iamcoach.pos.model.Category;
-import com.thoughtworks.iamcoach.pos.model.Item;
+gimport com.thoughtworks.iamcoach.pos.model.Item;
 import com.thoughtworks.iamcoach.pos.model.Promotion;
 import com.thoughtworks.iamcoach.pos.model.PromotionFactory;
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
@@ -14,26 +13,6 @@ public class ItemImple implements ItemDao {
     private ResultSet rs = null;
     private ConnctionUlti connctionUlti = new ConnctionUlti();
 
-    public Item getItemByBarcode(String barcode) {
-        String sql = "SELECT * FROM items WHERE barcode = ?";
-
-        Item item = null;
-        Connection conn = connctionUlti.getConnection();
-        try{
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, barcode);
-            rs = pstmt.executeQuery();
-            rs.next();
-
-            item = new Item(rs.getString("id"), rs.getInt("categoryId"), rs.getString("barcode"), rs.getString("name"), rs.getString("unit"), rs.getDouble("price"));
-
-            closeAllConnrction();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return item;
-    }
 
     public ArrayList<Item> getItems() {
         ArrayList<Item> items = new ArrayList<Item>();
@@ -87,29 +66,6 @@ public class ItemImple implements ItemDao {
         }
 
         return promotions;
-    }
-
-    public Category getCategory(int id) {
-        String sql = "SELECT categories.name, items.* FROM categories, items "+
-                "WHERE items.id = ? AND categories.id = items.categoryId" ;
-
-        Category category = null;
-        Connection connection = connctionUlti.getConnection();
-        try {
-            pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,id);
-
-            rs = pstmt.executeQuery();
-            rs.next();
-
-            category = new Category(rs.getString("id"), rs.getString("name"));
-
-            closeAllConnrction();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return category;
     }
 
     private void closeAllConnrction(){
