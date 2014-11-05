@@ -15,4 +15,8 @@
     <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
+
+    <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImple" scope="prototype">
+        <constructor-arg ref="jdbcTemplate"/>
+    </bean>
 </beans>
