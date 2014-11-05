@@ -1,7 +1,6 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.model.*;
-import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
@@ -14,6 +13,7 @@ public class ItemImple implements ItemDao {
     public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
     }
+
 
     public ArrayList<Item> getItems() {
         String sql = "SELECT * FROM items";
