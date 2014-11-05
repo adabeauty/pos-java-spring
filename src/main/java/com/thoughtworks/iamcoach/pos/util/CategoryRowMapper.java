@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategoryRowMapper implements RowMapper{
+    private Category category;
+
+    public CategoryRowMapper(Category category) {
+        this.category = category;
+    }
 
     public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
         Category category = new Category();
