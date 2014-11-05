@@ -23,9 +23,7 @@ public class ItemServiceTest {
         Promotion promotion = new BuyTwoOneFreePromotion(1, 1, "buy_two_one_free", 1.0);
         promotions.add(promotion);
 
-        String barcode = "TF1001";
         int id = 1;
-        Category category = new Category(null, "drink");
 
         ItemImple itemImple = mock(ItemImple.class);
         when(itemImple.getItems()).thenReturn(items);
