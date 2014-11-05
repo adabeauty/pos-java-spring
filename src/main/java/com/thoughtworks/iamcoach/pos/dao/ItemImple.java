@@ -1,12 +1,9 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.model.*;
-import com.thoughtworks.iamcoach.pos.util.ItemRowMapper;
-import com.thoughtworks.iamcoach.pos.util.PromotionRowMapper;
-import org.springframework.jdbc.core.RowMapper;
+import com.thoughtworks.iamcoach.pos.util.*;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
-import java.sql.*;
 import java.util.ArrayList;
 
 public class ItemImple implements ItemDao {
