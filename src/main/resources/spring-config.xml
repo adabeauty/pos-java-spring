@@ -2,5 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/pos_java?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="username" value="root" />
+        <property name="password" value="wh0415" />
+    </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
 
+    <bean id="categoryImpl" class="com.thoughtworks.spring.dao.CategoryImple" scope="prototype">
+        <constructor-arg ref="jdbcTemplate"/>
+    </bean>
 </beans>
