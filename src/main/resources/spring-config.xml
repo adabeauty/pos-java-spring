@@ -18,6 +18,13 @@
         <constructor-arg ref="category"></constructor-arg>
     </bean>
 
+    <bean id="item" class="com.thoughtworks.iamcoach.pos.model.Item"/>
+    <bean id="itemRowMapper" class="com.thoughtworks.iamcoach.pos.util.ItemRowMapper">
+        <constructor-arg ref="item"/>
+    </bean>
+
+
+
     <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
         <constructor-arg ref="categoryRowMapper"></constructor-arg>
         <constructor-arg ref="jdbcTemplate"></constructor-arg>
