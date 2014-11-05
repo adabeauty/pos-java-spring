@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/pos_java?useUnicode=true&amp;characterEncoding=utf-8" />
@@ -15,11 +16,9 @@
     <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
-
     <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImple" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
-
     <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImple">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
@@ -27,15 +26,12 @@
     <bean id="itemService" class="com.thoughtworks.iamcoach.pos.service.ItemService">
         <constructor-arg ref="itemImpl"/>
     </bean>
-
     <bean id="promotionService" class="com.thoughtworks.iamcoach.pos.service.PromotionService">
         <constructor-arg ref="promotionImpl"/>
     </bean>
-
     <bean id="scanerService" class="com.thoughtworks.iamcoach.pos.service.Scanner">
         <constructor-arg value="cart.txt"/>
     </bean>
-
     <bean id="cartService" class="com.thoughtworks.iamcoach.pos.service.CartService" scope="prototype">
         <constructor-arg index="0" ref="scanerService"/>
         <constructor-arg index="1" ref="itemImpl"/>
