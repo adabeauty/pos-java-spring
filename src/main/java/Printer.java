@@ -9,10 +9,12 @@ import java.util.Date;
 public class Printer {
     private  CartService cartService = null;
     private  ArrayList<CartItem> cartItems = null;
+    private CategoryImple categoryImple;
 
-    public Printer(CartService cartService){
+    public Printer(CartService cartService, CategoryImple categoryImple){
         this.cartService = cartService;
         this.cartItems = cartService.getCartInfo();
+        this.categoryImple = categoryImple;
     }
 
     public String printList() {
@@ -39,7 +41,6 @@ public class Printer {
 
     private String printAllCartItems(){
         String allCartItems = "************************************************" + "\n";
-        CategoryDao categoryImple = new CategoryImple();
 
         ArrayList<Category> categories = categoryImple.getCategories();
         for(int i=0; i<categories.size(); i++){
@@ -56,7 +57,6 @@ public class Printer {
     private String printCategory(ArrayList<CartItem> cartItems){
         String categoryText = "";
 
-        CategoryDao categoryImple = new CategoryImple();
         categoryText += categoryImple.getCategoryById(cartItems.get(0).getItem().getCategoryId()).getName() + "\n";
 
         for (CartItem cartItem : cartItems) {
