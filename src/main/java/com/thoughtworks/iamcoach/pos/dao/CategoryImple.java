@@ -2,18 +2,24 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
 import com.thoughtworks.iamcoach.pos.model.Category;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.sql.*;
 
 import java.util.ArrayList;
 
 public class CategoryImple implements CategoryDao{
+    private SimpleJdbcTemplate simpleJdbcTemplate;
+
+    public CategoryImple(SimpleJdbcTemplate simpleJdbcTemplate) {
+        this.simpleJdbcTemplate = simpleJdbcTemplate;
+    }
+
     private ConnctionUlti connctionUlti = new ConnctionUlti();
     
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-    
-    @Override
+
     public ArrayList<Category> getCategories() {
         String sql = "SELECT * FROM categories";
 
@@ -35,7 +41,6 @@ public class CategoryImple implements CategoryDao{
         return categories;
     }
 
-    @Override
     public Category getCategoryById(int id) {
         String sql = "SELECT * FROM categories WHERE id = ?";
 
