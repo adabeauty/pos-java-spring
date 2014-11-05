@@ -2,6 +2,7 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.model.*;
 import com.thoughtworks.iamcoach.pos.util.ConnctionUlti;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -73,6 +74,25 @@ public class ItemImple implements ItemDao {
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static final class UserRowMapper implements RowMapper {
+
+        public Item mapRow(ResultSet rs, int rowNum) {
+            Item item = new Item();
+            try {
+                item.setId(rs.getString("id"));
+                item.setCategoryId(rs.getInt("categoryId"));
+                item.setBarcode(rs.getString("barcode"));
+                item.setName(rs.getString("name"));
+                item.setUnit(rs.getString("unit"));
+                item.setPrice(rs.getDouble("price"));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return item;
         }
     }
 }
