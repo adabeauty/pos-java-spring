@@ -28,22 +28,7 @@ public class CategoryImple implements CategoryDao{
 
     public Category getCategoryById(int id) {
         String sql = "SELECT * FROM categories WHERE id = ?";
-
-        Category category = null;
-        Connection conn = connctionUlti.getConnection();
-        try{
-            preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            category = new Category(resultSet.getString("id"), resultSet.getString("name"));
-
-            CloseAllConnection();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return category;
+        return (Category)simpleJdbcTemplate.queryForObject(sql, new UserRowMapper(), id);
     }
 
     private void CloseAllConnection(){
