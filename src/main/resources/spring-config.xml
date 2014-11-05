@@ -40,7 +40,7 @@
         <constructor-arg index="0" ref="scanerService"/>
         <constructor-arg index="1" ref="itemImpl"/>
     </bean>
-    
+
     <bean id="printer" class="Printer" scope="prototype">
         <constructor-arg ref="cartService"/>
         <constructor-arg ref="categoryImpl"/>
