@@ -30,4 +30,9 @@
         </constructor-arg>
         <constructor-arg index="1" ref="itemImpl"/>
     </bean>
+
+    <bean id="printer" class="Printer">
+        <constructor-arg ref="cartService"/>
+        <constructor-arg ref="categoryImpl"/>
+    </bean>
 </beans>
