@@ -12,7 +12,7 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="categoryImpl" class="com.thoughtworks.spring.dao.CategoryImple" scope="prototype">
+    <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
 </beans>
