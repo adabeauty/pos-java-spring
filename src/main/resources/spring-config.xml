@@ -39,7 +39,7 @@
         <constructor-arg ref="promotionRowMapper"/>
     </bean>
 
-    <bean id="itemService" class="com.thoughtworks.iamcoach.pos.service.ItemService">
+    <bean id="itemService" class="com.thoughtworks.iamcoach.pos.service.ItemServiceImpl">
         <constructor-arg ref="itemImpl"/>
     </bean>
     <bean id="promotionService" class="com.thoughtworks.iamcoach.pos.service.PromotionService">
