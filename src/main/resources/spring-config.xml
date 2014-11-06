@@ -48,7 +48,7 @@
     <bean id="scanerService" class="com.thoughtworks.iamcoach.pos.service.Scanner">
         <constructor-arg value="cart.txt"/>
     </bean>
-    <bean id="cartService" class="com.thoughtworks.iamcoach.pos.service.CartService" scope="prototype">
+    <bean id="cartService" class="com.thoughtworks.iamcoach.pos.service.CartServiceImpl" scope="prototype">
         <constructor-arg index="0" ref="scanerService"/>
         <constructor-arg index="1" ref="itemImpl"/>
     </bean>
