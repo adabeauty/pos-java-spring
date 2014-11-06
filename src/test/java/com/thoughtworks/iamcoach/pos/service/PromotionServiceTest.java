@@ -21,7 +21,7 @@ public class PromotionServiceTest {
         ArrayList<Promotion> promotions = new ArrayList<Promotion>();
         promotions.add(promotion);
 
-        PromotionDao promotionImple = mock(PromotionImple.class);
+        PromotionDao promotionImple = mock(PromotionImpl.class);
         when(promotionImple.getPromotionByType(type)).thenReturn(promotion);
         when(promotionImple.getPromotions()).thenReturn(promotions);
 

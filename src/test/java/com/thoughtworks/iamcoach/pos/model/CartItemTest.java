@@ -40,7 +40,7 @@ public class CartItemTest {
         promotions.add(new BuyTwoOneFreePromotion(1, 1, "buy_two_one_free", 1.0));
         promotions.add(new DiscountPromotion(3, 3, "discount", 0.75));
 
-        PromotionDao promotionImple = mock(PromotionImple.class);
+        PromotionDao promotionImple = mock(PromotionImpl.class);
         when(promotionImple.getPromotions()).thenReturn(promotions);
 
         return promotionImple;
