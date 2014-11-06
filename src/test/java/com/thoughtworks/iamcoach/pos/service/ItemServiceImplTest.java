@@ -11,7 +11,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ItemServiceImplTest {
-    ItemServiceImpl itemServiceImpl = null;
+    ItemService itemServiceImpl = null;
 
     @Before
     public void mock_ItemImpl(){
