@@ -9,8 +9,8 @@ public class CartServiceImpl implements CartService {
     private ItemDao itemImple;
     private ArrayList<String> inputs;
 
-    public CartServiceImpl(Scanner scanner, ItemDao itemImple){
-        this.inputs = scanner.getInputs();
+    public CartServiceImpl(ScannerImpl scannerImpl, ItemDao itemImple){
+        this.inputs = scannerImpl.getInputs();
         this.itemImple = itemImple;
     }
 

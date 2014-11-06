@@ -37,8 +37,8 @@ public class CartServiceImplTest {
         when(itemImpl.getPromotions(4)).thenReturn(promotions);
         when(itemImpl.getPromotions(5)).thenReturn(promotions);
 
-        Scanner scanner =  new Scanner("cart.txt");
-        cartServiceImpl = new CartServiceImpl(scanner, itemImpl);
+        ScannerImpl scannerImpl =  new ScannerImpl("cart.txt");
+        cartServiceImpl = new CartServiceImpl(scannerImpl, itemImpl);
     }
 
     @Test
