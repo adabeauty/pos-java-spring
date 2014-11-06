@@ -42,7 +42,7 @@
     <bean id="itemService" class="com.thoughtworks.iamcoach.pos.service.ItemServiceImpl">
         <constructor-arg ref="itemImpl"/>
     </bean>
-    <bean id="promotionService" class="com.thoughtworks.iamcoach.pos.service.PromotionService">
+    <bean id="promotionService" class="com.thoughtworks.iamcoach.pos.service.PromotionServiceImpl">
         <constructor-arg ref="promotionImpl"/>
     </bean>
     <bean id="scanerService" class="com.thoughtworks.iamcoach.pos.service.Scanner">
