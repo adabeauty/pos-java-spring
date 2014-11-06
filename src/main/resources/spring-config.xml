@@ -29,7 +29,7 @@
         <constructor-arg ref="categoryRowMapper"></constructor-arg>
         <constructor-arg ref="jdbcTemplate"></constructor-arg>
     </bean>
-    <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImple" scope="prototype">
+    <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImpl" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
         <constructor-arg ref="itemRowMapper"/>
         <constructor-arg ref="promotionRowMapper"/>
