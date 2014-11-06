@@ -5,11 +5,11 @@ import com.thoughtworks.iamcoach.pos.model.*;
 
 import java.util.*;
 
-public class CartService implements CartServiceInter {
+public class CartServiceImpl implements CartServiceInter {
     private ItemDao itemImple;
     private ArrayList<String> inputs;
 
-    public CartService(Scanner scanner, ItemDao itemImple){
+    public CartServiceImpl(Scanner scanner, ItemDao itemImple){
         this.inputs = scanner.getInputs();
         this.itemImple = itemImple;
     }

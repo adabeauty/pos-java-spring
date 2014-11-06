@@ -11,9 +11,9 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class CartServiceTest {
+public class CartServiceImplTest {
 
-    CartService cartService = null;
+    CartServiceImpl cartServiceImpl = null;
 
     @Before
     public void mock_ItemImpl(){
@@ -38,23 +38,23 @@ public class CartServiceTest {
         when(itemImpl.getPromotions(5)).thenReturn(promotions);
 
         Scanner scanner =  new Scanner("cart.txt");
-        cartService = new CartService(scanner, itemImpl);
+        cartServiceImpl = new CartServiceImpl(scanner, itemImpl);
     }
 
     @Test
     public void can_get_all_cartItems(){
-        assertThat(cartService.getCartInfo().size()).isEqualTo(3);
-        assertThat(cartService.getCartInfo().get(0).getNum()).isEqualTo(5);
-        assertThat(cartService.getCartInfo().get(1).getNum()).isEqualTo(2.0);
+        assertThat(cartServiceImpl.getCartInfo().size()).isEqualTo(3);
+        assertThat(cartServiceImpl.getCartInfo().get(0).getNum()).isEqualTo(5);
+        assertThat(cartServiceImpl.getCartInfo().get(1).getNum()).isEqualTo(2.0);
     }
 
     @Test
     public void can_get_total_sum(){
-        assertThat(cartService.getTotalSum()).isEqualTo(123);
+        assertThat(cartServiceImpl.getTotalSum()).isEqualTo(123);
     }
 
     @Test
     public void can_get_actual_sum(){
-        assertThat(cartService.getActualSum()).isEqualTo(123);
+        assertThat(cartServiceImpl.getActualSum()).isEqualTo(123);
     }
 }
