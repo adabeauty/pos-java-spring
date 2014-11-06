@@ -6,11 +6,11 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.util.ArrayList;
 
-public class CategoryImple implements CategoryDao{
+public class CategoryImpl implements CategoryDao{
     private SimpleJdbcTemplate simpleJdbcTemplate;
     private CategoryRowMapper categoryRowMapper;
 
-    public CategoryImple(SimpleJdbcTemplate simpleJdbcTemplate, CategoryRowMapper categoryRowMapper) {
+    public CategoryImpl(SimpleJdbcTemplate simpleJdbcTemplate, CategoryRowMapper categoryRowMapper) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
         this.categoryRowMapper = categoryRowMapper;
     }
