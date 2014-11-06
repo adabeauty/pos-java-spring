@@ -5,7 +5,7 @@ import com.thoughtworks.iamcoach.pos.model.*;
 
 import java.util.ArrayList;
 
-public class ItemServiceImpl {
+public class ItemServiceImpl implements ItemService {
     private ItemImpl itemImpl;
 
     public ItemServiceImpl(ItemImpl itemImpl) {
