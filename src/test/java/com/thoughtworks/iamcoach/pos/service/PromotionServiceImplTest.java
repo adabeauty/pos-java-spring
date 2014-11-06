@@ -11,7 +11,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class PromotionServiceImplTest {
-    PromotionServiceImpl promotionServiceImpl;
+    PromotionService promotionServiceImpl;
 
     @Before
     public void mock_PromotionImpl(){
