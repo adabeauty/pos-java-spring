@@ -1,7 +1,7 @@
 package com.thoughtworks.iamcoach.pos.service;
 
-/**
- * Created by wanghuan on 14-11-6.
- */
+import java.util.ArrayList;
+
 public interface Scanner {
+    public ArrayList<String> getInputs();
 }
