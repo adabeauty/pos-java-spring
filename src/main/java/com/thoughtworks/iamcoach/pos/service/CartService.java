@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by wanghuan on 14-11-6.
  */
-public interface CartServiceInter {
+public interface CartService {
     ArrayList<CartItem> getCartInfo();
 
     double getTotalSum();
