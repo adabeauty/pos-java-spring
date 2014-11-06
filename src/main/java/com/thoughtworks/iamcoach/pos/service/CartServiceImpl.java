@@ -5,7 +5,7 @@ import com.thoughtworks.iamcoach.pos.model.*;
 
 import java.util.*;
 
-public class CartServiceImpl implements CartServiceInter {
+public class CartServiceImpl implements CartService {
     private ItemDao itemImple;
     private ArrayList<String> inputs;
 
