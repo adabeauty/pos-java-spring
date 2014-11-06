@@ -6,11 +6,11 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.util.ArrayList;
 
-public class PromotionImple implements PromotionDao {
+public class PromotionImpl implements PromotionDao {
     private SimpleJdbcTemplate simpleJdbcTemplate;
     private PromotionRowMapper promotionRowMapper;
 
-    public PromotionImple(SimpleJdbcTemplate simpleJdbcTemplate, PromotionRowMapper promotionRowMapper) {
+    public PromotionImpl(SimpleJdbcTemplate simpleJdbcTemplate, PromotionRowMapper promotionRowMapper) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
         this.promotionRowMapper = promotionRowMapper;
     }
