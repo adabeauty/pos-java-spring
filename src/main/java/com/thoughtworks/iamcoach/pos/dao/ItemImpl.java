@@ -6,12 +6,12 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import java.util.ArrayList;
 
-public class ItemImple implements ItemDao {
+public class ItemImpl implements ItemDao {
     private SimpleJdbcTemplate simpleJdbcTemplate;
     private ItemRowMapper itemRowMapper;
     private PromotionRowMapper promotionRowMapper;
 
-    public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate, ItemRowMapper itemRowMapper, PromotionRowMapper promotionRowMapper) {
+    public ItemImpl(SimpleJdbcTemplate simpleJdbcTemplate, ItemRowMapper itemRowMapper, PromotionRowMapper promotionRowMapper) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
         this.itemRowMapper = itemRowMapper;
         this.promotionRowMapper = promotionRowMapper;
