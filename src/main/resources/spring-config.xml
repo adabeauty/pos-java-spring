@@ -15,7 +15,7 @@
 
     <bean id="category" class="com.thoughtworks.iamcoach.pos.model.Category" scope="prototype"/>
     <bean id="categoryRowMapper" class="com.thoughtworks.iamcoach.pos.util.CategoryRowMapper">
-        <constructor-arg ref="category"/>
+        <!--<constructor-arg ref="category"/>-->
     </bean>
 
     <bean id="item" class="com.thoughtworks.iamcoach.pos.model.Item" scope="prototype"/>
