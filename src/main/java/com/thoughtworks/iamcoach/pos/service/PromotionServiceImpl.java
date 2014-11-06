@@ -5,7 +5,7 @@ import com.thoughtworks.iamcoach.pos.model.Promotion;
 
 import java.util.ArrayList;
 
-public class PromotionServiceImpl {
+public class PromotionServiceImpl implements PromotionService {
     private PromotionDao promotionImple;
 
     public PromotionServiceImpl(PromotionDao promotionImple) {
