@@ -4,9 +4,9 @@ import com.thoughtworks.iamcoach.pos.util.ReadFileUlti;
 
 import java.util.ArrayList;
 
-public class Scanner {
+public class ScannerImpl {
     private String fileName;
-    public Scanner(String fileName) {
+    public ScannerImpl(String fileName) {
         this.fileName = fileName;
     }
 
