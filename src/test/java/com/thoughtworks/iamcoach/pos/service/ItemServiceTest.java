@@ -1,6 +1,6 @@
 package com.thoughtworks.iamcoach.pos.service;
 
-import com.thoughtworks.iamcoach.pos.dao.ItemImple;
+import com.thoughtworks.iamcoach.pos.dao.ItemImpl;
 import com.thoughtworks.iamcoach.pos.model.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,11 +25,11 @@ public class ItemServiceTest {
 
         int id = 1;
 
-        ItemImple itemImple = mock(ItemImple.class);
-        when(itemImple.getItems()).thenReturn(items);
-        when(itemImple.getPromotions(id)).thenReturn(promotions);
+        ItemImpl itemImpl = mock(ItemImpl.class);
+        when(itemImpl.getItems()).thenReturn(items);
+        when(itemImpl.getPromotions(id)).thenReturn(promotions);
 
-        itemService = new ItemService(itemImple);
+        itemService = new ItemService(itemImpl);
     }
 
     @Test

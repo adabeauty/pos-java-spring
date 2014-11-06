@@ -28,17 +28,17 @@ public class CartServiceTest {
         Promotion promotion = new DiscountPromotion(1, 1, "discount", 1.0);
         promotions.add(promotion);
 
-        ItemImple itemImple = mock(ItemImple.class);
+        ItemImpl itemImpl = mock(ItemImpl.class);
 
-        when(itemImple.getItems()).thenReturn(items);
-        when(itemImple.getPromotions(1)).thenReturn(promotions);
-        when(itemImple.getPromotions(2)).thenReturn(promotions);
-        when(itemImple.getPromotions(3)).thenReturn(promotions);
-        when(itemImple.getPromotions(4)).thenReturn(promotions);
-        when(itemImple.getPromotions(5)).thenReturn(promotions);
+        when(itemImpl.getItems()).thenReturn(items);
+        when(itemImpl.getPromotions(1)).thenReturn(promotions);
+        when(itemImpl.getPromotions(2)).thenReturn(promotions);
+        when(itemImpl.getPromotions(3)).thenReturn(promotions);
+        when(itemImpl.getPromotions(4)).thenReturn(promotions);
+        when(itemImpl.getPromotions(5)).thenReturn(promotions);
 
         Scanner scanner =  new Scanner("cart.txt");
-        cartService = new CartService(scanner, itemImple);
+        cartService = new CartService(scanner, itemImpl);
     }
 
     @Test
