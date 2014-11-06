@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-public class PromotionServiceTest {
-    PromotionService promotionService;
+public class PromotionServiceImplTest {
+    PromotionServiceImpl promotionServiceImpl;
 
     @Before
     public void mock_PromotionImpl(){
@@ -25,17 +25,17 @@ public class PromotionServiceTest {
         when(promotionImple.getPromotionByType(type)).thenReturn(promotion);
         when(promotionImple.getPromotions()).thenReturn(promotions);
 
-        promotionService = new PromotionService(promotionImple);
+        promotionServiceImpl = new PromotionServiceImpl(promotionImple);
     }
 
     @Test
     public void can_get_promotion_by_type(){
         int type = 1;
-        assertThat(promotionService.getPromotionByType(type) instanceof SeconHalfPromotion).isTrue();
+        assertThat(promotionServiceImpl.getPromotionByType(type) instanceof SeconHalfPromotion).isTrue();
     }
 
     @Test
     public void can_get_promotions(){
-        assertThat(promotionService.getPromotions().size()).isEqualTo(1);
+        assertThat(promotionServiceImpl.getPromotions().size()).isEqualTo(1);
     }
 }

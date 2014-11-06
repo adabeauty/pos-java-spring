@@ -5,10 +5,10 @@ import com.thoughtworks.iamcoach.pos.model.Promotion;
 
 import java.util.ArrayList;
 
-public class PromotionService {
+public class PromotionServiceImpl {
     private PromotionDao promotionImple;
 
-    public PromotionService(PromotionDao promotionImple) {
+    public PromotionServiceImpl(PromotionDao promotionImple) {
         this.promotionImple = promotionImple;
     }
 
