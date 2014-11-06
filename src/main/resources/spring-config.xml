@@ -34,7 +34,7 @@
         <constructor-arg ref="itemRowMapper"/>
         <constructor-arg ref="promotionRowMapper"/>
     </bean>
-    <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImple">
+    <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImpl">
         <constructor-arg ref="jdbcTemplate"/>
         <constructor-arg ref="promotionRowMapper"/>
     </bean>
