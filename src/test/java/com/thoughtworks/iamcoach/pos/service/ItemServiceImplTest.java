@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-public class ItemServiceTest {
-    ItemService itemService = null;
+public class ItemServiceImplTest {
+    ItemServiceImpl itemServiceImpl = null;
 
     @Before
     public void mock_ItemImpl(){
@@ -29,17 +29,17 @@ public class ItemServiceTest {
         when(itemImpl.getItems()).thenReturn(items);
         when(itemImpl.getPromotions(id)).thenReturn(promotions);
 
-        itemService = new ItemService(itemImpl);
+        itemServiceImpl = new ItemServiceImpl(itemImpl);
     }
 
     @Test
     public void can_get_all_items(){
-        assertThat(itemService.getItems().size()).isEqualTo(1);
+        assertThat(itemServiceImpl.getItems().size()).isEqualTo(1);
     }
 
     @Test
     public void can_get_promotions_of_item(){
         int id = 1;
-        assertThat(itemService.getPromotions(id).size()).isEqualTo(1);
+        assertThat(itemServiceImpl.getPromotions(id).size()).isEqualTo(1);
     }
 }

@@ -5,10 +5,10 @@ import com.thoughtworks.iamcoach.pos.model.*;
 
 import java.util.ArrayList;
 
-public class ItemService {
+public class ItemServiceImpl {
     private ItemImpl itemImpl;
 
-    public ItemService(ItemImpl itemImpl) {
+    public ItemServiceImpl(ItemImpl itemImpl) {
         this.itemImpl = itemImpl;
     }
 
