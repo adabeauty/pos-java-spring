@@ -5,9 +5,6 @@ import com.thoughtworks.iamcoach.pos.model.Promotion;
 
 import java.util.ArrayList;
 
-/**
- * Created by wanghuan on 14-11-6.
- */
 public interface ItemService {
     ArrayList<Item> getItems();
 
