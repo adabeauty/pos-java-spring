@@ -25,7 +25,7 @@
 
     <bean id="promotionRowMapper" class="com.thoughtworks.iamcoach.pos.util.PromotionRowMapper"></bean>
 
-    <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImple" scope="prototype">
+    <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImpl" scope="prototype">
         <constructor-arg ref="categoryRowMapper"></constructor-arg>
         <constructor-arg ref="jdbcTemplate"></constructor-arg>
     </bean>
