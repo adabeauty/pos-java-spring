@@ -9,9 +9,12 @@ import java.util.ArrayList;
 public class ItemImple implements ItemDao {
     private SimpleJdbcTemplate simpleJdbcTemplate;
     private ItemRowMapper itemRowMapper;
-    public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate, ItemRowMapper itemRowMapper) {
+    private PromotionRowMapper promotionRowMapper;
+
+    public ItemImple(SimpleJdbcTemplate simpleJdbcTemplate, ItemRowMapper itemRowMapper, PromotionRowMapper promotionRowMapper) {
         this.simpleJdbcTemplate = simpleJdbcTemplate;
         this.itemRowMapper = itemRowMapper;
+        this.promotionRowMapper = promotionRowMapper;
     }
 
     public ArrayList<Item> getItems() {
@@ -22,6 +25,6 @@ public class ItemImple implements ItemDao {
     public ArrayList<Promotion> getPromotions(int id) {
         String sql = "SELECT promotions.*, relationship.discount FROM promotions, relationship " +
                 "WHERE relationship.itemId=? AND promotions.id=relationship.promotionId";
-        return  (ArrayList<Promotion>)simpleJdbcTemplate.query(sql, new PromotionRowMapper(), id);
+        return  (ArrayList<Promotion>)simpleJdbcTemplate.query(sql, promotionRowMapper, id);
     }
 }
