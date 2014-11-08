@@ -30,7 +30,6 @@
     </bean>
     <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImpl" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
-        <constructor-arg ref="itemRowMapper"/>
         <constructor-arg ref="promotionRowMapper"/>
     </bean>
     <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImpl">
