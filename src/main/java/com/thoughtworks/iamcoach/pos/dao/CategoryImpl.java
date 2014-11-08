@@ -2,26 +2,26 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.model.Category;
 import com.thoughtworks.iamcoach.pos.util.CategoryRowMapper;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
 
 public class CategoryImpl implements CategoryDao{
-    private SimpleJdbcTemplate simpleJdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
     private CategoryRowMapper categoryRowMapper;
 
-    public CategoryImpl(SimpleJdbcTemplate simpleJdbcTemplate, CategoryRowMapper categoryRowMapper) {
-        this.simpleJdbcTemplate = simpleJdbcTemplate;
+    public CategoryImpl(JdbcTemplate jdbcTemplate, CategoryRowMapper categoryRowMapper) {
+        this.jdbcTemplate = jdbcTemplate;
         this.categoryRowMapper = categoryRowMapper;
     }
 
     public ArrayList<Category> getCategories() {
         String sql = "SELECT * FROM categories";
-        return (ArrayList<Category>)simpleJdbcTemplate.query(sql, categoryRowMapper);
+        return (ArrayList<Category>)jdbcTemplate.query(sql, categoryRowMapper);
     }
 
     public Category getCategoryById(int id) {
         String sql = "SELECT * FROM categories WHERE id = ?";
-        return (Category)simpleJdbcTemplate.queryForObject(sql, categoryRowMapper, id);
+        return (Category)jdbcTemplate.queryForObject(sql, categoryRowMapper, id);
     }
 }
