@@ -9,7 +9,7 @@
         <property name="username" value="root" />
         <property name="password" value="wh0415" />
     </bean>
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
 
