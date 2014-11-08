@@ -9,7 +9,7 @@ import java.util.Date;
 public class Printer {
     private CartService cartService = null;
     private  ArrayList<CartItem> cartItems = null;
-    private CategoryImpl categoryImpl;
+    private CategoryDao categoryImpl;
 
     public Printer(CartService cartService, CategoryImpl categoryImpl){
         this.cartService = cartService;
