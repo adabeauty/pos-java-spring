@@ -11,11 +11,9 @@ import java.util.ArrayList;
 
 public class CategoryImpl implements CategoryDao{
     private JdbcTemplate jdbcTemplate;
-    private CategoryRowMapper categoryRowMapper;
 
-    public CategoryImpl(JdbcTemplate jdbcTemplate, CategoryRowMapper categoryRowMapper) {
+    public CategoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.categoryRowMapper = categoryRowMapper;
     }
 
     public ArrayList<Category> getCategories() {
@@ -30,7 +28,7 @@ public class CategoryImpl implements CategoryDao{
 
     public Category getCategoryById(int id) {
         String sql = "SELECT * FROM categories WHERE id = ?";
-        
+
         return jdbcTemplate.queryForObject(sql, new RowMapper<Category>() {
             public Category mapRow(ResultSet rs, int i) throws SQLException {
                 return new Category(rs.getString("id"), rs.getString("name"));
