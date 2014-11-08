@@ -11,11 +11,9 @@ import java.util.ArrayList;
 
 public class ItemImpl implements ItemDao {
     private JdbcTemplate jdbcTemplate;
-    private PromotionRowMapper promotionRowMapper;
 
-    public ItemImpl(JdbcTemplate jdbcTemplate, PromotionRowMapper promotionRowMapper) {
+    public ItemImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.promotionRowMapper = promotionRowMapper;
     }
 
     public ArrayList<Item> getItems() {
@@ -31,6 +29,15 @@ public class ItemImpl implements ItemDao {
     public ArrayList<Promotion> getPromotions(int id) {
         String sql = "SELECT promotions.*, relationship.discount FROM promotions, relationship " +
                 "WHERE relationship.itemId=? AND promotions.id=relationship.promotionId";
-        return  (ArrayList<Promotion>)jdbcTemplate.query(sql, promotionRowMapper, id);
+        return (ArrayList<Promotion>)jdbcTemplate.query(sql, new RowMapper<Promotion>() {
+            public Promotion mapRow(ResultSet rs, int i) throws SQLException {
+                Promotion promotion = PromotionFactory.generatePromotion(rs.getInt("type"));
+                promotion.setId(rs.getInt("id"));
+                promotion.setType(rs.getInt("type"));
+                promotion.setDescription(rs.getString("description"));
+                promotion.setDiscount(rs.getDouble("discount"));
+                return promotion;
+            }
+        }, id);
     }
 }

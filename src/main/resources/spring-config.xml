@@ -13,19 +13,13 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="category" class="com.thoughtworks.iamcoach.pos.model.Category" scope="prototype"/>
-    <bean id="categoryRowMapper" class="com.thoughtworks.iamcoach.pos.util.CategoryRowMapper">
-        <!--<constructor-arg ref="category"/>-->
-    </bean>
-
     <bean id="promotionRowMapper" class="com.thoughtworks.iamcoach.pos.util.PromotionRowMapper"></bean>
 
     <bean id="categoryImpl" class="com.thoughtworks.iamcoach.pos.dao.CategoryImpl" scope="prototype">
-        <constructor-arg ref="jdbcTemplate"></constructor-arg>
+        <constructor-arg ref="jdbcTemplate"/>
     </bean>
     <bean id="itemImpl" class="com.thoughtworks.iamcoach.pos.dao.ItemImpl" scope="prototype">
         <constructor-arg ref="jdbcTemplate"/>
-        <constructor-arg ref="promotionRowMapper"/>
     </bean>
     <bean id="promotionImpl" class="com.thoughtworks.iamcoach.pos.dao.PromotionImpl">
         <constructor-arg ref="jdbcTemplate"/>
